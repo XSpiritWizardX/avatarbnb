@@ -11,9 +11,9 @@ const router = express.Router();
 router.delete('/:imageId', requireAuth, async (req, res) => {
   try {
 
-    const { imageId } = req.params;
+    const { id } = req.params;
     const userId = req.user.id;
-    const reviewImage = await ReviewImage.findByPk(imageId, {
+    const reviewImage = await ReviewImage.findByPk(id, {
       include: {
         model: Review,
         attributes: ['id', 'userId'],
